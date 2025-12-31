@@ -80,7 +80,7 @@ export class Tab extends EventEmitter<TabEventsInterface> {
     });
     page.on('dialog', dialog => this._dialogShown(dialog));
     page.on('download', download => {
-      void this._downloadStarted(download);
+      void this._downloadStarted(download).catch(e => logUnhandledError(e));
     });
     page.setDefaultNavigationTimeout(this.context.config.timeouts.navigation);
     page.setDefaultTimeout(this.context.config.timeouts.action);
