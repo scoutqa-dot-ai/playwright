@@ -1,6 +1,6 @@
 {
-  "name": "playwright",
-  "version": "1.60.0-next",
+  "name": "@scoutqa/playwright",
+  "version": "1.60.0-fork.1",
   "description": "A high-level API to automate web browsers",
   "repository": {
     "type": "git",
@@ -52,7 +52,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "playwright-core": "1.60.0-next"
+    "playwright-core": "1.60.0-alpha-1776125391000"
   },
   "devDependencies": {
     "@babel/code-frame": "^7.27.1",
