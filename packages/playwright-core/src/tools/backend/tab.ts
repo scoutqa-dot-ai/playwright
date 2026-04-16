@@ -21,6 +21,7 @@ import { locatorOrSelectorAsSelector } from '@isomorphic/locatorParser';
 import { ManualPromise } from '@isomorphic/manualPromise';
 import { eventsHelper } from '@utils/eventsHelper';
 import { disposeAll } from '@utils/disposable';
+import { logUnhandledError } from '../mcp/log';
 import { waitForCompletion, eventWaiter } from './utils';
 import { LogFile } from './logFile';
 import { ModalState } from './tool';
@@ -125,7 +126,7 @@ export class Tab extends EventEmitter<TabEventsInterface> {
       }),
       eventsHelper.addEventListener(p, 'dialog', dialog => this._dialogShown(dialog)),
       eventsHelper.addEventListener(p, 'download', download => {
-        void this._downloadStarted(download);
+        void this._downloadStarted(download).catch(e => logUnhandledError(e));
       }),
     ];
     // eslint-disable-next-line no-restricted-syntax
